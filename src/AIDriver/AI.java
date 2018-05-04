@@ -36,6 +36,9 @@ public class AI
 		description = _description;
 	}
 
-
+//	public static void toString()
+//	{
+//		System.out.println("Name: " + );
+//	}
 
 }
