@@ -23,7 +23,7 @@ public class AI
 
 	private void SetName(String _name)
 	{
-		name = _name;
+		name = _name; 
 	}
 
 	public String GetDescription()

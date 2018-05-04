@@ -12,7 +12,7 @@ public class Driver
 	public static void main(String[] args) 
 	{
 		SetAI(LoadAI());
-		System.out.println(Ransyn.toString());
+		System.out.println(Ransyn.toString()); 
 	}
 	
 	private static AI LoadAI()

@@ -15,7 +15,7 @@ class AITest {
 	@Test
 	void testGetName() 
 	{
-		fail("Not yet implemented");
+		fail("Not yet implemented"); 
 	}
 
 	@Test
