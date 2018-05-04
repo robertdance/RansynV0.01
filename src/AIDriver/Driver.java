@@ -34,6 +34,7 @@ public class Driver
 			Scanner input = new Scanner(AIPERSONALINFO);
 			input.useDelimiter(", ");
 			String[] _attributes = {input.next(), input.next()};
+			System.out.println(">> The AI Attribute File has been loaded successfully <<");
 			return _attributes;	
 			}
 			
