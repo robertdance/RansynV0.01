@@ -6,18 +6,20 @@ import java.util.Scanner;
 
 public class Driver 
 {
-
+	static AI Ransyn;
 	private final static File AIPERSONALINFO = new File("AIPersonalInfo.txt");
 	
 	public static void main(String[] args) 
 	{
-		LoadAI();
+		SetAI(LoadAI());
+		System.out.println(Ransyn.toString());
 	}
 	
-	private static void LoadAI()
+	private static AI LoadAI()
 	{
 		String[] attributes = LoadAIInfoFromFile();
-		AI Ransyn = new AI(attributes[0], attributes[1]);
+		AI _ransyn = new AI(attributes[0], attributes[1]);
+		return _ransyn;
 	}
 	
 	private static String[] LoadAIInfoFromFile()
@@ -45,6 +47,11 @@ public class Driver
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private static void SetAI(AI _ransyn)
+	{
+		Ransyn= _ransyn;
 	}
 	
 
