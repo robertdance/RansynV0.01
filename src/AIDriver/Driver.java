@@ -27,7 +27,7 @@ public class Driver
 
 		try 
 		{
-			if(!AIPERSONALINFO.exists())
+			if(!AIPERSONALINFO.exists()) 
 			{
 				System.out.println("The AI Info File does not exist. Please create it at " + AIPERSONALINFO.getAbsolutePath() + " and then reload the program...");
 			}

@@ -13,7 +13,7 @@ public class AI
 	public AI(String _name, String _description)
 	{
 		SetName(_name);
-		SetDescription(_description);
+		SetDescription(_description); 
 	}
 
 	public String GetName()
