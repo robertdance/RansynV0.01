@@ -5,23 +5,21 @@ import java.util.Scanner;
 public class Conversation 
 {
 	
-	public static String Greeting()
+	public static void Greeting()
+	{
+		System.out.println("Greetings. I am learning. Please ask me a question, and I will endevour to answer it...\n");
+	}
+	
+	public static String AskMeAQuestion()
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.println("\n\nHello, what would you like to do? ");
+		System.out.println("\n\nYou: ");
 		String answer = input.next();
 		return answer;
 	}
 	
-	
-	
-	private void AskMeAQuestion()
+	public static void AnswerQuestion()
 	{
-		
-	}
-	
-	private void AnswerQuestion()
-	{
-		
+		System.out.println("Ransyn: ");
 	}
 }

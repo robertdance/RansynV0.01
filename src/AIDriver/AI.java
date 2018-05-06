@@ -11,8 +11,9 @@ public class AI
 	private String name;
 	private String description;
 	private ArrayList<String> attributes;
+	private Dictionary dictionary;
 
-	public AI(String _name, String _description)
+	public AI(String _name, String _description, Dictionary _dictionary)
 	{
 		SetName(_name);
 		SetDescription(_description); 
@@ -40,7 +41,7 @@ public class AI
 
 	public String toString()
 	{
-		String toString = "Name: " + GetName() + "\nDescription: " + GetDescription();
+		String toString = ">> Name: " + GetName() + "\n>> Description: " + GetDescription();
 		return toString;
 	}
 	
@@ -52,6 +53,11 @@ public class AI
 	private void SetAttributes(ArrayList<String> _attributes)
 	{
 		attributes = _attributes;
+	}
+	
+	private void SetDictionary()
+	{
+		
 	}
 
 }
