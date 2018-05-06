@@ -11,7 +11,7 @@ public class Sentance
 	String conjunction; //
 	String interjection; //
 	
-	String subject; //The noun or noun that perform the action 
+	String subject; //The noun or noun that perform the action  
 	String object; //The noun or nouns that receive the action
 	
 	final String SPACE = " ";

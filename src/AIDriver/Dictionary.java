@@ -10,7 +10,7 @@ public class Dictionary
 {
 
 	ArrayList<Word> words = new ArrayList<Word>();
-	final File DICTIONARY = new File("Dictionary.txt");
+	final File DICTIONARY = new File("Dictionary.txt"); 
 	
 	public Dictionary()
 	{

@@ -10,7 +10,7 @@ public class Conversation
 		System.out.println("Greetings. I am learning. Please ask me a question, and I will endevour to answer it...\n");
 	}
 	
-	public static String AskMeAQuestion()
+	public static String AskMeAQuestion() 
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n\nYou: ");

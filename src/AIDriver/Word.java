@@ -7,7 +7,7 @@ public class Word
 	String wordType;
 	String definition;
 	
-	public Word(String _word, String _wordType, String _definition)
+	public Word(String _word, String _wordType, String _definition) 
 	{
 		SetWord(_word);
 		SetWordType(_wordType);

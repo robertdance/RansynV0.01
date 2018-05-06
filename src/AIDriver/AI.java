@@ -13,7 +13,7 @@ public class AI
 	private ArrayList<String> attributes;
 	private Dictionary dictionary;
 
-	public AI(String _name, String _description, Dictionary _dictionary)
+	public AI(String _name, String _description, Dictionary _dictionary) 
 	{
 		SetName(_name);
 		SetDescription(_description); 
