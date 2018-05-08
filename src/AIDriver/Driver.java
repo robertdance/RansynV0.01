@@ -2,6 +2,7 @@ package AIDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver 
@@ -11,25 +12,30 @@ public class Driver
 
 	public static void main(String[] args) 
 	{
-		SetAI(LoadAI());
+		setAI(loadAI());
 		System.out.println(Ransyn.toString()); 
-		CheckAnswer();
+		checkAnswer();
 	}
-	private static AI LoadAI()
+	private static AI loadAI()
 	{
-		String[] attributes = LoadAIInfoFromFile();
-		AI _ransyn = new AI(attributes[0], attributes[1]);
+		ArrayList<String> attributes = loadAIInfoFromFile();
+		Dictionary _dictionary = new Dictionary();
+		AI _ransyn = new AI(attributes.get(0), attributes.get(1), _dictionary);
 		return _ransyn;
 	}
 
-	private static String[] LoadAIInfoFromFile()
+	private static ArrayList <String> loadAIInfoFromFile()
 	{
 
 		try 
 		{
 			Scanner input = new Scanner(AIPERSONALINFO); 
 			input.useDelimiter(", ");
-			String[] _attributes = {input.next(), input.next()};
+			ArrayList<String> _attributes = new ArrayList<String>();
+			while(input.hasNext())
+			{
+				_attributes.add(input.next());
+			}
 			System.out.println(">> The AI Attribute File has been loaded successfully <<");
 			input.close();
 			return _attributes;	
@@ -42,11 +48,11 @@ public class Driver
 		return null;
 	}
 
-	private static void SetAI(AI _ransyn)
+	private static void setAI(AI _ransyn)
 	{
 		Ransyn = _ransyn;
 	}
-	private static void CheckAnswer()
+	private static void checkAnswer()
 	{
 		boolean exit = false;
 		Conversation.Greeting();

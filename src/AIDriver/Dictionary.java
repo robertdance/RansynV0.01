@@ -11,31 +11,32 @@ public class Dictionary
 
 	ArrayList<Word> words = new ArrayList<Word>();
 	final File DICTIONARY = new File("Dictionary.txt"); 
-	
+
 	public Dictionary()
 	{
-		SetDictionary(DICTIONARY);
+		checkFile();
+		setDictionary(DICTIONARY);
 	}
-	
-	private void CheckFile()
+
+	private void checkFile()
 	{
-		if(!GetDictionary().exists())
+		if(!getDictionaryFile().exists())
 		{
 			try {
-				GetDictionary().createNewFile();
+				System.out.println(getDictionaryFile().createNewFile());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	public ArrayList<Word> GetWords()
+
+	public ArrayList<Word> getWords()
 	{
 		return words;
 	}
-	
-	private ArrayList<Word> SetDictionary(File _dictionary)
+
+	private ArrayList<Word> setDictionary(File _dictionary)
 	{
 		ArrayList<Word> _words = new ArrayList<Word>();
 		try {
@@ -51,18 +52,18 @@ public class Dictionary
 		}
 		return _words;
 	}
-	
-	public File GetDictionary()
+
+	public File getDictionaryFile()
 	{
 		return DICTIONARY;
 	}
-	
-//	private Word AddItemToDictionary()
-//	{
-//				
-//	}
-	
-	private void CheckDictionary(String _word, ArrayList<Word> _wordlist)
+
+	//	private Word AddItemToDictionary()
+	//	{
+	//				
+	//	}
+
+	private void checkDictionary(String _word, ArrayList<Word> _wordlist)
 	{
 		_word = _word.replaceAll("(\\r|\\n)", "");
 		for(int count = 0; count< _wordlist.size(); count++)
@@ -78,9 +79,16 @@ public class Dictionary
 			}
 		}
 	}
-	
-	private void FindWordInDictionary()
+
+	private void findWordInDictionary()
 	{
-		
+
+	}
+
+	@Override
+	public String toString()
+	{
+		String toString = "\n>> Dictionary Location: " + getDictionaryFile().getAbsolutePath() + "\n>> My Dictionary is currently loaded with " + getWords().size() + " words";
+		return toString;
 	}
 }

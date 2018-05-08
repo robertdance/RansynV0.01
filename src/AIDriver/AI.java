@@ -15,49 +15,56 @@ public class AI
 
 	public AI(String _name, String _description, Dictionary _dictionary) 
 	{
-		SetName(_name);
-		SetDescription(_description); 
+		setName(_name);
+		setDescription(_description); 
+		setDictionary(_dictionary);
 	}
 
-	public String GetName()
+	public String getName()
 	{
 		return name;
 	}
 
-	private void SetName(String _name)
+	private void setName(String _name)
 	{
 		name = _name; 
 	}
 
-	public String GetDescription()
+	public String getDescription()
 	{
 		return description;
 	}
 
-	private void SetDescription(String _description)
+	private void setDescription(String _description)
 	{
 		description = _description;
 	}
 
+	@Override
 	public String toString()
 	{
-		String toString = ">> Name: " + GetName() + "\n>> Description: " + GetDescription();
+		String toString = ">> Name: " + getName() + "\n>> Description: " + getDescription() + getDictionary().toString();
 		return toString;
 	}
 	
-	public ArrayList<String> GetAttributes()
+	public ArrayList<String> getAttributes()
 	{
 		return attributes;
 	}
 	
-	private void SetAttributes(ArrayList<String> _attributes)
+	private void setAttributes(ArrayList<String> _attributes)
 	{
 		attributes = _attributes;
 	}
 	
-	private void SetDictionary()
+	private void setDictionary(Dictionary _dictionary)
 	{
-		
+		dictionary = _dictionary;
+	}
+	
+	public Dictionary getDictionary()
+	{
+		return dictionary;
 	}
 
 }
