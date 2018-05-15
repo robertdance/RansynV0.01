@@ -80,10 +80,19 @@ public class Dictionary
 		}
 	}
 
-	private void findWordInDictionary()
+	private Word findWordInDictionary(String _string)
 	{
+		for(int count = 0; count < getWords().size(); count++)
+		{
+			if(_string.equalsIgnoreCase(getWords().get(count).GetWord()))
+			{
+				Word _word = getWords().get(count);
+				return _word;
+			}
+		}
+		return null;
+	} 
 
-	}
 
 	@Override
 	public String toString()

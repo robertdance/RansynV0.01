@@ -14,11 +14,12 @@ public class AI
 	private Dictionary dictionary;
 	private Conversation conversation;
 
-	public AI(String _name, String _description, Dictionary _dictionary) 
+	public AI(String _name, String _description, Dictionary _dictionary, Conversation _conversation) 
 	{
 		setName(_name);
 		setDescription(_description); 
 		setDictionary(_dictionary);
+		setConversation(_conversation);
 	}
 
 	public String getName()
@@ -47,22 +48,22 @@ public class AI
 		String toString = ">> Name: " + getName() + "\n>> Description: " + getDescription() + getDictionary().toString();
 		return toString;
 	}
-	
+
 	public ArrayList<String> getAttributes()
 	{
 		return attributes;
 	}
-	
+
 	private void setAttributes(ArrayList<String> _attributes)
 	{
 		attributes = _attributes;
 	}
-	
+
 	private void setDictionary(Dictionary _dictionary)
 	{
 		dictionary = _dictionary;
 	}
-	
+
 	public Dictionary getDictionary()
 	{
 		return dictionary;
@@ -74,6 +75,40 @@ public class AI
 
 	public void setConversation(Conversation _conversation) {
 		conversation = _conversation;
+	}
+
+	public void loadConfigMenu() 
+	{
+		Scanner input = new Scanner(System.in);
+		boolean config = true;
+		do
+		{
+			System.out.println("** Welcome to " + getName() + "'s Config Menu **");
+			System.out.println("1:  Print out the last conversation from the beginning");
+			System.out.println("2:  ");
+			config = processMenuSelection(input.nextInt());
+		}
+		while(config == true);
+	}
+
+	private boolean processMenuSelection(int _selection) 
+	{
+		switch(_selection)
+		{
+		case 0:
+		{
+			return false;
+		}
+		case 1:
+		{
+			System.out.println(getConversation().toString());
+			return true;
+		}
+		default:
+		{
+			return true;
+		}
+		}
 	}
 
 }

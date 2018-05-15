@@ -8,19 +8,22 @@ import java.util.Scanner;
 public class Driver 
 {
 	static AI Ransyn;
+	private final static String CONFIG = "Bloodway";
 	private final static File AIPERSONALINFO = new File("AIPersonalInfo.txt");
 
 	public static void main(String[] args) 
 	{
 		setAI(loadAI());
 		System.out.println(Ransyn.toString()); 
-		checkAnswer();
+		checkAnswer(getAI());
 	}
+
 	private static AI loadAI()
 	{
 		ArrayList<String> attributes = loadAIInfoFromFile();
 		Dictionary _dictionary = new Dictionary();
-		AI _ransyn = new AI(attributes.get(0), attributes.get(1), _dictionary);
+		Conversation _conversation = new Conversation();
+		AI _ransyn = new AI(attributes.get(0), attributes.get(1), _dictionary, _conversation);
 		return _ransyn;
 	}
 
@@ -52,29 +55,30 @@ public class Driver
 	{
 		Ransyn = _ransyn;
 	}
-	private static void checkAnswer()
+	private static void checkAnswer(AI Ransyn)
 	{
 		boolean exit = false;
-		Conversation.Greeting();
+		Ransyn.getConversation().Greeting();
 		do
 		{
-			String _answer = Conversation.AskMeAQuestion();
-			switch(_answer)
+			String _answer = Ransyn.getConversation().AskMeAQuestion();
+
+			if(_answer.equalsIgnoreCase(CONFIG))
 			{
-			case "exit":
+				getAI().loadConfigMenu();
+			}
+			else if(_answer.equalsIgnoreCase("exit"))
 			{
 				System.out.println("Ransyn: Thank you. Have a great day!");
 				exit = true;
-				break;
-			}
-			default:
-			{
-				Conversation.AnswerQuestion();
-			}
 			}
 		}
 		while(exit == false);
+	}
 
-
+	private static AI getAI() 
+	{
+		// TODO Auto-generated method stub
+		return Ransyn;
 	}
 }
