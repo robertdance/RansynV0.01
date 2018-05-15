@@ -12,6 +12,7 @@ public class AI
 	private String description;
 	private ArrayList<String> attributes;
 	private Dictionary dictionary;
+	private Conversation conversation;
 
 	public AI(String _name, String _description, Dictionary _dictionary) 
 	{
@@ -65,6 +66,14 @@ public class AI
 	public Dictionary getDictionary()
 	{
 		return dictionary;
+	}
+
+	public Conversation getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(Conversation _conversation) {
+		conversation = _conversation;
 	}
 
 }
