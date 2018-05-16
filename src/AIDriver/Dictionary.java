@@ -16,7 +16,7 @@ public class Dictionary
 	public Dictionary()
 	{
 		checkFile();
-		setDictionary(DICTIONARY);
+		words = setUpDictionary(DICTIONARY);
 	}
 
 	private void checkFile()
@@ -37,15 +37,18 @@ public class Dictionary
 		return words;
 	}
 
-	private ArrayList<Word> setDictionary(File _dictionary)
+	private ArrayList<Word> setUpDictionary(File _dictionary)
 	{
 		ArrayList<Word> _words = new ArrayList<Word>();
 		try {
 			Scanner in = new Scanner(_dictionary);
 			in.useDelimiter("#");
+			//System.out.println(in.hasNext());
 			while(in.hasNext())
 			{
-				_words.add(new Word(in.next(), in.next(), in.next()));
+				Word newWord = new Word(in.next(), in.next(), in.next());
+				System.out.println(newWord);
+				_words.add(newWord);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -106,8 +109,9 @@ public class Dictionary
 		{
 			FileWriter writer = new FileWriter(getDictionaryFile(), true);
 			System.out.println(newWord.toString());
-			writer.write(newWord.toString());
-
+			writer.append(newWord.toString());
+			writer.flush();
+			writer.close();
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block

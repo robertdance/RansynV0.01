@@ -49,11 +49,11 @@ public class Word
 		definition = _definition;
 	}
 	
+	@Override
 	public String toString()
 	{	
-		String toString = (getWord() + "#" + getWordType() + "#" + getDefinition() + "#"); 
-		System.out.println(toString);
-		return toString();
+		String toString = ("#" + getWord() + "#" + getWordType() + "#" + getDefinition()); 
+		return toString;
 	}
 
 }
