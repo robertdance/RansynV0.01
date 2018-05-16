@@ -50,8 +50,9 @@ public class Word
 	}
 	
 	public String toString()
-	{
-		String toString = getWord()+ ", " + getWordType() + ", " + getDefinition() + ", "; 
+	{	
+		String toString = (getWord() + "#" + getWordType() + "#" + getDefinition() + "#"); 
+		System.out.println(toString);
 		return toString();
 	}
 

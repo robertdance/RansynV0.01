@@ -70,20 +70,23 @@ public class Dictionary
 		{
 			System.out.println(_sentance.getWords().get(count));
 			String _word = _sentance.getWords().get(count);
-			System.out.println("1");
 			if(_wordlist.size() == 0)
 			{
+				System.out.println("1");
 				_wordlist.add(addWordToDictionary(_word));
+				break;
 			}
 			for(int count1 = 0; count1 < _wordlist.size(); count1++)
 			{
 				System.out.println("2");
-				if(!_wordlist.get(count1).GetWord().equalsIgnoreCase(_word))
+				if(!_wordlist.get(count1).getWord().equalsIgnoreCase(_word))
 				{
 					System.out.println("3");
 					_wordlist.add(addWordToDictionary(_word));
+					break;
 				}
 			}
+
 		}
 		return _wordlist;
 	}
@@ -101,15 +104,12 @@ public class Dictionary
 		checkFile();
 		try 
 		{
-			FileWriter writer = new FileWriter(getDictionaryFile());
-			writer.append(newWord.toString());
-			
-		} 
-		catch (FileNotFoundException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+			FileWriter writer = new FileWriter(getDictionaryFile(), true);
+			System.out.println(newWord.toString());
+			writer.write(newWord.toString());
+
+		}
+		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -126,12 +126,12 @@ public class Dictionary
 	public String setWordType()
 	{
 		Scanner input = new Scanner(System.in);
-		for(int count1 = 0; count1 < Word.GetWordTypes().length; count1++)
+		for(int count1 = 0; count1 < Word.getWordTypes().length; count1++)
 		{
-			System.out.println((count1+1) + ": " + Word.GetWordTypes()[count1]);
+			System.out.println((count1+1) + ": " + Word.getWordTypes()[count1]);
 		}
 		System.out.print("Please tell me what type of word this is: ");
-		String answer = Word.GetWordTypes()[input.nextInt()];
+		String answer = Word.getWordTypes()[input.nextInt()];
 		return answer;
 	}
 
@@ -139,7 +139,7 @@ public class Dictionary
 	{
 		for(int count = 0; count < getWords().size(); count++)
 		{
-			if(_string.equalsIgnoreCase(getWords().get(count).GetWord()))
+			if(_string.equalsIgnoreCase(getWords().get(count).getWord()))
 			{
 				Word _word = getWords().get(count);
 				return _word;
