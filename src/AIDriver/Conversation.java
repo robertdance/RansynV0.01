@@ -18,7 +18,7 @@ public class Conversation
 		System.out.println("Greetings. I am learning. Please ask me a question, and I will endevour to answer it...\n");
 	}
 
-	public String AskMeAQuestion() 
+	public String AskMeAQuestion(Dictionary _dictionary) 
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.println("\n\nYou: ");
@@ -27,6 +27,7 @@ public class Conversation
 		{
 			addToConversation(constructSentance(answer));
 		}
+		
 		//System.out.println(toString());
 		return answer;
 	}

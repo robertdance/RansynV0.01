@@ -85,7 +85,7 @@ public class AI
 		{
 			System.out.println("** Welcome to " + getName() + "'s Config Menu **");
 			System.out.println("1:  Print out the last conversation from the beginning");
-			System.out.println("2:  ");
+			System.out.println("2:  Load words into the Dictionary, based on the current conversation");
 			config = processMenuSelection(input.nextInt());
 		}
 		while(config == true);
@@ -104,10 +104,22 @@ public class AI
 			System.out.println(getConversation().toString());
 			return true;
 		}
+		case 2:
+		{
+			updateDictionary();
+		}
 		default:
 		{
 			return true;
 		}
+		}
+	}
+	private void updateDictionary()
+	{
+		for(int count = 0; count < getConversation().getSentances().size(); count++)
+		{
+			//System.out.println(getConversation().getSentances().get(count));
+			getDictionary().checkDictionary(getConversation().getSentances().get(count), getDictionary().getWords());
 		}
 	}
 

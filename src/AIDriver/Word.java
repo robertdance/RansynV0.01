@@ -9,44 +9,50 @@ public class Word
 	
 	public Word(String _word, String _wordType, String _definition) 
 	{
-		SetWord(_word);
-		SetWordType(_wordType);
-		SetDefinition(_definition);
+		setWord(_word);
+		setWordType(_wordType);
+		setDefinition(_definition);
 	}
 	
-	public String GetWord()
+	public String getWord()
 	{
 		return word;
 	}
 	
-	public String GetWordType()
+	public String getWordType()
 	{
 		return wordType;
 	}
 	
-	public String GetDefinition()
+	public String getDefinition()
 	{
 		return definition;
 	}
 	
-	public static String[] GetWordTypes()
+	public static String[] getWordTypes()
 	{
 		return wordTypes;
 	}
 	
-	private void SetWord(String _word)
+	private void setWord(String _word)
 	{
 		word = _word;
 	}
 	
-	private void SetWordType(String _wordType)
+	private void setWordType(String _wordType)
 	{
 		wordType = _wordType;
 	}
 	
-	private void SetDefinition(String _definition)
+	private void setDefinition(String _definition)
 	{
 		definition = _definition;
+	}
+	
+	public String toString()
+	{
+		String toString = getWord()+ ", " + getWordType() + ", " + getDefinition() + ", "; 
+		return toString();
 	}
 
 }

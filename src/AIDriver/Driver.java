@@ -61,7 +61,7 @@ public class Driver
 		Ransyn.getConversation().Greeting();
 		do
 		{
-			String _answer = Ransyn.getConversation().AskMeAQuestion();
+			String _answer = Ransyn.getConversation().AskMeAQuestion(Ransyn.getDictionary());
 
 			if(_answer.equalsIgnoreCase(CONFIG))
 			{

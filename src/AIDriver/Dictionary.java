@@ -2,6 +2,7 @@ package AIDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -63,21 +64,75 @@ public class Dictionary
 	//				
 	//	}
 
-	private void checkDictionary(String _word, ArrayList<Word> _wordlist)
+	public ArrayList<Word> checkDictionary(Sentance _sentance, ArrayList<Word> _wordlist)
 	{
-		_word = _word.replaceAll("(\\r|\\n)", "");
-		for(int count = 0; count< _wordlist.size(); count++)
+		for(int count = 0; count < _sentance.getWords().size(); count++)
 		{
-			if(!_wordlist.get(count).word.equalsIgnoreCase(_word))
+			System.out.println(_sentance.getWords().get(count));
+			String _word = _sentance.getWords().get(count);
+			System.out.println("1");
+			if(_wordlist.size() == 0)
 			{
-				System.out.println("I am not famialier with that word. Could you please provide the following details:");
-				System.out.println("Please tell me what type of word this is, from the list below:");
-				for(int count1 = 0; count1 < Word.GetWordTypes().length; count++)
+				_wordlist.add(addWordToDictionary(_word));
+			}
+			for(int count1 = 0; count1 < _wordlist.size(); count1++)
+			{
+				System.out.println("2");
+				if(!_wordlist.get(count1).GetWord().equalsIgnoreCase(_word))
 				{
-					System.out.println(count1 + ": " + Word.GetWordTypes()[count1]);
+					System.out.println("3");
+					_wordlist.add(addWordToDictionary(_word));
 				}
 			}
 		}
+		return _wordlist;
+	}
+
+	private Word addWordToDictionary(String _word) 
+	{
+		System.out.println("I am not famialier with the word '" + _word + "'. Could you please provide the following details:");
+		Word newWord = new Word(_word, setWordType(), setDefinition(_word));
+		writeWordToDictionaryFile(newWord);
+		return newWord;
+	}
+
+	private void writeWordToDictionaryFile(Word newWord) 
+	{
+		checkFile();
+		try 
+		{
+			FileWriter writer = new FileWriter(getDictionaryFile());
+			writer.append(newWord.toString());
+			
+		} 
+		catch (FileNotFoundException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private String setDefinition(String _word) 
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please provide a definition for the word " + _word);
+		String _definition = input.nextLine();
+		return _definition;
+	}
+
+	public String setWordType()
+	{
+		Scanner input = new Scanner(System.in);
+		for(int count1 = 0; count1 < Word.GetWordTypes().length; count1++)
+		{
+			System.out.println((count1+1) + ": " + Word.GetWordTypes()[count1]);
+		}
+		System.out.print("Please tell me what type of word this is: ");
+		String answer = Word.GetWordTypes()[input.nextInt()];
+		return answer;
 	}
 
 	private Word findWordInDictionary(String _string)
