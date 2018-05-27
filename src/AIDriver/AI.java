@@ -18,7 +18,7 @@ public class AI
 	{
 		setName(_name);
 		setDescription(_description); 
-		setDictionary(_dictionary);
+		setDictionary(_dictionary); 
 		setConversation(_conversation);
 	}
 
@@ -84,8 +84,10 @@ public class AI
 		do
 		{
 			System.out.println("** Welcome to " + getName() + "'s Config Menu **");
+			System.out.println("0:  Return back to the conversation");
 			System.out.println("1:  Print out the last conversation from the beginning");
 			System.out.println("2:  Load words into the Dictionary, based on the current conversation");
+			System.out.println("3:  Print the contents of the current dictionary");
 			config = processMenuSelection(input.nextInt());
 		}
 		while(config == true);
@@ -98,6 +100,7 @@ public class AI
 		case 0:
 		{
 			return false;
+			
 		}
 		case 1:
 		{
@@ -107,6 +110,12 @@ public class AI
 		case 2:
 		{
 			updateDictionary();
+			return true;
+		}
+		case 3:
+		{
+			displayDictionary();
+			return true;
 		}
 		default:
 		{
@@ -114,13 +123,33 @@ public class AI
 		}
 		}
 	}
+	private void displayDictionary() 
+	{
+		for(int count = 0; count < getDictionary().getWords().size(); count++)
+		{
+			System.out.println(getDictionary().getWords().get(count).printString());
+		}
+	}
+
 	private void updateDictionary()
 	{
 		for(int count = 0; count < getConversation().getSentances().size(); count++)
 		{
-			//System.out.println(getConversation().getSentances().get(count));
-			getDictionary().checkDictionary(getConversation().getSentances().get(count), getDictionary().getWords());
+			for(int count1 = 0; count1 < getConversation().getSentances().get(count).getWords().size(); count1++)
+			{
+				for(int count2 = 0; count2 < getDictionary().getWords().size(); count2++)
+				{
+					if(getConversation().getSentances().get(count).getWords().get(count1).equalsIgnoreCase(getDictionary().getWords().get(count2).getWord()))
+					{
+						System.out.println("'" + getConversation().getSentances().get(count).getWords().get(count1) + "'" + " is already in my Dictionary.");
+						count2 = getDictionary().getWords().size();
+					}
+					else if(!getConversation().getSentances().get(count).getWords().get(count1).equalsIgnoreCase(getDictionary().getWords().get(count2).getWord()) && count2 == getDictionary().getWords().size()-1)
+					{
+						getDictionary().checkDictionary(getConversation().getSentances().get(count), getDictionary().getWords());
+					}
+				}
+			}
 		}
 	}
-
 }

@@ -1,10 +1,12 @@
 package AIDriver;
 
+import java.util.ArrayList;
+
 public class Word 
 {
 	String word;
-	static String[] wordTypes = { "noun", "pronoun", "verb", "adjective", "adverb", "conjunction", "interjection"};
-	String wordType;
+	static String[] wordTypes = { "Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Conjunction", "Interjection"};
+	ArrayList<String> wordType;
 	String definition;
 	
 	public Word(String _word, String _wordType, String _definition) 
@@ -19,7 +21,7 @@ public class Word
 		return word;
 	}
 	
-	public String getWordType()
+	public ArrayList<String> getWordType()
 	{
 		return wordType;
 	}
@@ -41,7 +43,7 @@ public class Word
 	
 	private void setWordType(String _wordType)
 	{
-		wordType = _wordType;
+		wordType.add(_wordType);
 	}
 	
 	private void setDefinition(String _definition)
@@ -53,6 +55,12 @@ public class Word
 	public String toString()
 	{	
 		String toString = ("#" + getWord() + "#" + getWordType() + "#" + getDefinition()); 
+		return toString;
+	}
+	
+	public String printString()
+	{	
+		String toString = ("Word: " + getWord() + ", Type of Word: " + getWordType() + ", Definition: " + getDefinition()); 
 		return toString;
 	}
 

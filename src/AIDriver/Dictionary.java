@@ -109,7 +109,7 @@ public class Dictionary
 		{
 			FileWriter writer = new FileWriter(getDictionaryFile(), true);
 			System.out.println(newWord.toString());
-			writer.append(newWord.toString());
+			writer.write(newWord.toString());
 			writer.flush();
 			writer.close();
 		}
@@ -135,7 +135,7 @@ public class Dictionary
 			System.out.println((count1+1) + ": " + Word.getWordTypes()[count1]);
 		}
 		System.out.print("Please tell me what type of word this is: ");
-		String answer = Word.getWordTypes()[input.nextInt()];
+		String answer = Word.getWordTypes()[input.nextInt()-1];
 		return answer;
 	}
 
