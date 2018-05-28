@@ -43,12 +43,25 @@ public class Dictionary
 		try {
 			Scanner in = new Scanner(_dictionary);
 			in.useDelimiter("#");
+			ArrayList<String> _wordTypes = new ArrayList<String>();
+			Word w = new Word("w", _wordTypes, "w");
+			
 			//System.out.println(in.hasNext());
 			while(in.hasNext())
 			{
-				Word newWord = new Word(in.next(), in.next(), in.next());
+				String _word = in.next();
+				String _wordType = in.next();
+				for(int count = 0; count < w.getWordType().size(); count++)
+				{
+					if(_wordType.equalsIgnoreCase(w.getWordType().get(count)))
+					{
+						_wordTypes.add(_wordType);
+					}
+				}
+				String _definition = in.next();
+				Word newWord = new Word(_word, _wordTypes, _definition);
 				System.out.println(newWord);
-				_words.add(newWord);
+				
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -127,16 +140,30 @@ public class Dictionary
 		return _definition;
 	}
 
-	public String setWordType()
+	public ArrayList<String> setWordType()
 	{
+		boolean _wordType = true;
+		ArrayList<String> _wordTypes = new ArrayList<String>();
+		String answer;
 		Scanner input = new Scanner(System.in);
-		for(int count1 = 0; count1 < Word.getWordTypes().length; count1++)
+		do
 		{
-			System.out.println((count1+1) + ": " + Word.getWordTypes()[count1]);
+			for(int count1 = 0; count1 < Word.getWordTypes().length; count1++)
+			{
+				System.out.println((count1+1) + ": " + Word.getWordTypes()[count1]);
+			}
+			System.out.print("Please tell me what type of word this is: ");
+			answer = Word.getWordTypes()[input.nextInt()-1];
+			_wordTypes.add(answer);
+			System.out.print("Can this word have any additional types? (Y/N): ");
+			answer = input.next();
+			if(!answer.equalsIgnoreCase("Y"))
+			{
+				_wordType = false;
+			}
 		}
-		System.out.print("Please tell me what type of word this is: ");
-		String answer = Word.getWordTypes()[input.nextInt()-1];
-		return answer;
+		while(_wordType == true);
+		return _wordTypes;
 	}
 
 	private Word findWordInDictionary(String _string)
